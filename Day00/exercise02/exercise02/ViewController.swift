@@ -8,23 +8,11 @@
 
 import UIKit
 
-enum modes {
-    case NOT_SET
-    case ADDITION
-    case SUBTRACTION
-    case MULTIPLICATION
-    case DIVISION
-}
-
 class ViewController: UIViewController {
-
-    var labelString:String = "0"
-    var savedNum:Double = 0
-    var currentMode:modes = modes.NOT_SET
     
     @IBOutlet weak var label: UILabel!
     
-    @IBAction func numbers(num:Int,_ sender: UIButton)
+    @IBAction func numbers(_ sender: UIButton)
     {
         label.text = label.text! + String(sender.tag)
     }
