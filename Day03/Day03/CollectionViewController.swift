@@ -12,6 +12,13 @@ private let reuseIdentifier = "cell"
 
 class CollectionViewController: UICollectionViewController {
 
+    var urls = [
+     "https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA23005_hires.jpg",
+     "https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA23121_hires.jpg",
+     "https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA23004_hires.jpg",
+     "https://www.jpl.nasa.gov/spaceimages/images/largesize/PIA23010_hires.jpg"
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,22 +44,34 @@ class CollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return urls.count
+    }
+    
+    func loadImage(url: String) -> UIImage? {
+        if let url = URL(string : url) {
+            let urlContents = try? Data(contentsOf: url)
+            if let imageData = urlContents {
+                return UIImage(data: imageData)
+            }
+        }
+        return nil
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
     
         // Configure the cell
-    
-        return cell
+//        if let customImageCell = cell as? CollectionViewCell {
+//            customImageCell.image
+//        }
+        
+        let imageview:UIImageView = UIImageView(frame: <#T##CGRect#>)
     }
 
     // MARK: UICollectionViewDelegate
